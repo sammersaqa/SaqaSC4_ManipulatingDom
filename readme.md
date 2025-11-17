@@ -15,4 +15,4 @@ Built a fully interactive DOM playground using only beginner-friendly JavaScript
 - Ensured all features are modular, scalable, and lecture-aligned
 
 // Person Who Peer Reviewed Your Assignment  
-[Peer Name Here]
+Kel - 10/10 Works as intended all buttons function and code is nice and streamlined.
