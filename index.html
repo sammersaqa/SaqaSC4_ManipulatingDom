@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .box { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">Welcome to DOM Playground</h1>
+  <p id="description">Click buttons below to manipulate the page.</p>
+
+  <div id="box1" class="box">Box 1</div>
+  <div id="box2" class="box">Box 2</div>
+  <div id="box3" class="box">Box 3</div>
+
+  <img id="image" src="./assets/AIdog1.png" alt="Doggy" />
+
+  <ul id="list">
+    <li>Item A</li>
+    <li>Item B</li>
+  </ul>
+
+  <input type="text" id="inputField" placeholder="Type something..." />
+
+  <div id="buttons">
+    <button onclick="changeTitle()">Change Title</button>
+    <button onclick="changeDescription()">Change Description</button>
+    <button onclick="toggleBox1()">Toggle Box 1</button>
+    <button onclick="changeBox2Color()">Change Box 2 Color</button>
+    <button onclick="resizeBox3()">Resize Box 3</button>
+    <button onclick="changeImage()">Change Image</button>
+    <button onclick="addListItem()">Add List Item</button>
+    <button onclick="removeListItem()">Remove Last Item</button>
+    <button onclick="readInput()">Read Input</button>
+    <button onclick="resetAll()">Reset All</button>
+  </div>
+
+  <script src="./scripts/scripts.js"></script>
+</body>
+</html>
