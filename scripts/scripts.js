@@ -1,70 +1,89 @@
-function changeTitle() {
-  document.getElementById("main-title").textContent = "Title Changed!";
-}
+// 1. Select elements
+const pageTitle = document.getElementById("page-title");
+const subtitle = document.getElementById("subtitle");
+const changeTitleButton = document.getElementById("change-title-button");
+const colorButton = document.getElementById("change-button");
+const addCardButton = document.getElementById("add-card-button");
+const clearCardButton = document.getElementById("clear-cards-button");
+const addCustomCardButton = document.getElementById("add-custom-card-button");
+const customTextInput = document.getElementById("customer-text-input");
+const cardContainer = document.getElementById("cards-container");
+const image = document.getElementById("main-image");
+const toggleImageButton = document.getElementById("toggle-image-button");
+const resizeBox = document.getElementById("resize-box");
+const resizeButton = document.getElementById("resize-button");
+const list = document.getElementById("item-list");
+const addItemButton = document.getElementById("add-item-button");
+const removeItemButton = document.getElementById("remove-item-button");
 
-function changeDescription() {
-  document.getElementById("description").innerHTML = "<em>Description updated with emphasis.</em>";
-}
+// Track which image is showing
+let showingDog3 = true;
 
-function toggleBox1() {
-  const box = document.getElementById("box1");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
-function changeBox2Color() {
-  document.getElementById("box2").style.backgroundColor = "#f9c74f";
-}
-
-function resizeBox3() {
-  const box = document.getElementById("box3");
-  const currentScale = box.style.transform;
-
-  if (currentScale === "scale(1.5)") {
-    box.style.transform = "scale(1)";
+// 2. Change title
+changeTitleButton.addEventListener("click", function () {
+  if (pageTitle.innerText === "DOM Manipulation Playground") {
+    pageTitle.innerText = "DOM in Action";
+    subtitle.innerText = "Nice! You changed the DOM using JavaScript";
   } else {
-    box.style.transform = "scale(1.5)";
+    pageTitle.innerText = "DOM Manipulation Playground";
+    subtitle.innerText = "Click the button below to see the DOM in action.!!!";
   }
-}
+});
 
-function changeImage() {
-  const img = document.getElementById("image");
-  const currentSrc = img.src;
+// 3. Change background color
+colorButton.addEventListener("click", function () {
+  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.backgroundColor = randomColor;
+});
 
-  // Toggle between two images
-  if (currentSrc.includes("150")) {
-    img.src = "./assets/AIDog2.png";
+// 4. Add card
+addCardButton.addEventListener("click", function () {
+  cardContainer.innerHTML += "<div class='card'>This is a new card!</div>";
+});
+
+// 5. Clear cards
+clearCardButton.addEventListener("click", function () {
+  cardContainer.innerHTML = "";
+});
+
+// 6. Add custom card
+addCustomCardButton.addEventListener("click", function () {
+  const userText = customTextInput.value;
+  if (userText !== "") {
+    cardContainer.innerHTML += "<div class='card'>" + userText + "</div>";
+    customTextInput.value = "";
+  }
+});
+
+// 7. Toggle image (fixed)
+toggleImageButton.addEventListener("click", function () {
+  if (showingDog3 === true) {
+    image.src = "./assets/AIdog1.png";
+    showingDog3 = false;
   } else {
-    img.src = "./assets/AIDog3.png";
+    image.src = "./assets/AIdog3.png";
+    showingDog3 = true;
   }
-}
+});
 
-
-
-function addListItem() {
-  const li = document.createElement("li");
-  li.textContent = "New Item";
-  document.getElementById("list").appendChild(li);
-}
-
-function removeListItem() {
-  const list = document.getElementById("list");
-  if (list.lastElementChild) {
-    list.removeChild(list.lastElementChild);
+// 8. Resize box
+resizeButton.addEventListener("click", function () {
+  if (resizeBox.style.transform === "scale(1.5)") {
+    resizeBox.style.transform = "scale(1)";
+  } else {
+    resizeBox.style.transform = "scale(1.5)";
   }
-}
+});
 
-function readInput() {
-  const input = document.getElementById("inputField").value;
-  alert("You typed: " + input);
-}
+// 9. Add list item
+addItemButton.addEventListener("click", function () {
+  list.innerHTML += "<li>New List Item</li>";
+});
 
-function resetAll() {
-  document.getElementById("main-title").textContent = "Welcome to DOM Playground";
-  document.getElementById("description").textContent = "Click buttons below to manipulate the page.";
-  document.getElementById("box1").style.display = "block";
-  document.getElementById("box2").style.backgroundColor = "";
-  document.getElementById("box3").style.transform = "scale(1)";
-  document.getElementById("image").src = "https://via.placeholder.com/150";
-  document.getElementById("list").innerHTML = "<li>Item A</li><li>Item B</li>";
-  document.getElementById("inputField").value = "";
-}
+// 10. Remove last list item
+removeItemButton.addEventListener("click", function () {
+  const items = list.getElementsByTagName("li");
+  if (items.length > 0) {
+    list.removeChild(items[items.length - 1]);
+  }
+});
